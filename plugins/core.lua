@@ -3,23 +3,27 @@ return {
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
+      local dashboard = require "alpha.themes.dashboard"
+      local button = require("astronvim.utils").alpha_button
+      local get_icon = require("astronvim.utils").get_icon
       -- customize the dashboard header
       opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
+        "----------------------------------------",
+        "|      HELLO AND GUDLUCK  :)           | ",
+        "----------------------------------------",
+      }
+
+      dashboard.section.buttons.val = {
+        dashboard.button("n", "[n] New file",          ":ene <BAR> startinsert <CR>"),
+        dashboard.button("f", "[f] Find file",         ":Telescope find_files <CR>"),
+        dashboard.button("r", "[r] Recently usedfile", ":Telescope oldfiles <CR>"),
+        dashboard.button("t", "[t] Find text",         ":Telescope live_grep <CR>"),
+        dashboard.button("q", "[q] quit neovim",       ":qa <CR>"),
       }
       return opts
     end,
   },
+
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
